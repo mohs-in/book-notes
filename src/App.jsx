@@ -15,7 +15,7 @@ function App() {
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event, session) => {
-        console.log('Auth state changed:', session?.user?.email);
+        // console.log('Auth state changed:', session?.user?.email);
         setSession(session);
       }
     );
@@ -33,7 +33,7 @@ function App() {
         setError(error.message);
       }
       
-      console.log('Session found:', session?.user?.email || 'No user');
+      // console.log('Session found:', session?.user?.email || 'No user');
       setSession(session);
     } catch (err) {
       console.error('Unexpected error checking session:', err);
@@ -44,9 +44,9 @@ function App() {
   };
 
   // Debug: Log render state
-  useEffect(() => {
-    console.log('App state:', { loading, session: session?.user?.email, error });
-  }, [loading, session, error]);
+  // useEffect(() => {
+  //   console.log('App state:', { loading, session: session?.user?.email, error });
+  // }, [loading, session, error]);
 
   if (error) {
     return (
@@ -78,7 +78,7 @@ function App() {
     );
   }
 
-  console.log('Rendering:', session ? 'BookNotesApp' : 'Auth');
+  // console.log('Rendering:', session ? 'BookNotesApp' : 'Auth');
   
   return session ? <BookNotesApp user={session.user} /> : <Auth />;
 }
